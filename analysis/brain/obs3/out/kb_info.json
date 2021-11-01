@@ -1,0 +1,52 @@
+{
+    "workdir": "/home/sina/projects/sugarseq/analysis/notebooks/brain/rep1/lane2",
+    "version": "0.26.4",
+    "kallisto": {
+        "path": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/kallisto/kallisto",
+        "version": "0.46.2"
+    },
+    "bustools": {
+        "path": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/bustools/bustools",
+        "version": "0.40.0"
+    },
+    "start_time": "2021-10-03T16:47:15.014401",
+    "end_time": "2021-10-03T17:48:16.027236",
+    "elapsed": 3661.012835,
+    "call": "/home/sina/bin/miniconda3/bin/kb count --h5ad --filter -t 16 -m 16G -o cdna_out_mm/ -i ../../../../../reference/brain/cdna/index.idx -g ../../../../../reference/brain/cdna/t2g.txt -x 10xv3 ../../../../../data/brain/rep1/lane2/cdna/SE7372_SA103697_S2_L001_R1_001.fastq.gz ../../../../../data/brain/rep1/lane2/cdna/SE7372_SA103697_S2_L001_R2_001.fastq.gz",
+    "commands": [
+        "kallisto bus -i ../../../../../reference/brain/cdna/index.idx -o cdna_out_mm/ -x 10xv3 -t 16 ../../../../../data/brain/rep1/lane2/cdna/SE7372_SA103697_S2_L001_R1_001.fastq.gz ../../../../../data/brain/rep1/lane2/cdna/SE7372_SA103697_S2_L001_R2_001.fastq.gz",
+        "bustools inspect cdna_out_mm/output.bus",
+        "bustools sort -o cdna_out_mm/tmp/output.s.bus -T cdna_out_mm/tmp -t 16 -m 16G cdna_out_mm/output.bus",
+        "bustools inspect cdna_out_mm/tmp/output.s.bus",
+        "bustools inspect -o cdna_out_mm/inspect.json -w cdna_out_mm/10x_version3_whitelist.txt -e cdna_out_mm/matrix.ec cdna_out_mm/tmp/output.s.bus",
+        "bustools correct -o cdna_out_mm/tmp/output.s.c.bus -w cdna_out_mm/10x_version3_whitelist.txt cdna_out_mm/tmp/output.s.bus",
+        "bustools inspect cdna_out_mm/tmp/output.s.c.bus",
+        "bustools sort -o cdna_out_mm/output.unfiltered.bus -T cdna_out_mm/tmp -t 16 -m 16G cdna_out_mm/tmp/output.s.c.bus",
+        "bustools inspect cdna_out_mm/output.unfiltered.bus",
+        "bustools count -o cdna_out_mm/counts_unfiltered/cells_x_genes -g ../../../../../reference/brain/cdna/t2g.txt -e cdna_out_mm/matrix.ec -t cdna_out_mm/transcripts.txt --genecounts cdna_out_mm/output.unfiltered.bus",
+        "bustools whitelist -o cdna_out_mm/filter_barcodes.txt cdna_out_mm/output.unfiltered.bus",
+        "bustools correct -o cdna_out_mm/tmp/output.unfiltered.c.bus -w cdna_out_mm/filter_barcodes.txt cdna_out_mm/output.unfiltered.bus",
+        "bustools inspect cdna_out_mm/tmp/output.unfiltered.c.bus",
+        "bustools sort -o cdna_out_mm/output.filtered.bus -T cdna_out_mm/tmp -t 16 -m 16G cdna_out_mm/tmp/output.unfiltered.c.bus",
+        "bustools inspect cdna_out_mm/output.filtered.bus",
+        "bustools count -o cdna_out_mm/counts_filtered/cells_x_genes -g ../../../../../reference/brain/cdna/t2g.txt -e cdna_out_mm/matrix.ec -t cdna_out_mm/transcripts.txt --genecounts cdna_out_mm/output.filtered.bus"
+    ],
+    "runtimes": [
+        2123.4316761493683,
+        65.716787815094,
+        197.12017440795898,
+        12.509547472000122,
+        27.729173183441162,
+        85.53438949584961,
+        12.676913022994995,
+        237.3890950679779,
+        11.500426292419434,
+        16.336705684661865,
+        19.466205835342407,
+        526.2168247699738,
+        6.478770971298218,
+        163.84082221984863,
+        4.741882085800171,
+        11.865696907043457
+    ]
+}

@@ -1,0 +1,13 @@
+{
+	"n_targets": 0,
+	"n_bootstraps": 0,
+	"n_processed": 296492075,
+	"n_pseudoaligned": 151509551,
+	"n_unique": 63672434,
+	"p_pseudoaligned": 51.1,
+	"p_unique": 21.5,
+	"kallisto_version": "0.46.2",
+	"index_version": 0,
+	"start_time": "Tue Sep 28 11:28:48 2021",
+	"call": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/kallisto/kallisto bus -i ../../../../../reference/brain/cdna/index.idx -o cdna_out/ -x 10xv3 -t 16 ../../../../../data/brain/rep2/lane3/cdna/SE7372_SA103702_S7_L001_R1_001.fastq.gz ../../../../../data/brain/rep2/lane3/cdna/SE7372_SA103702_S7_L001_R2_001.fastq.gz"
+}
