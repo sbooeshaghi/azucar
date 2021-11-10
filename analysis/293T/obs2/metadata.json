@@ -3,5 +3,6 @@
     "organism": "homo_sapiens",
     "replicate": 1,
     "lane_10x": 1,
-    "molecule_type": "tags"
+    "molecule_type": "tags",
+    "observarion": 2
 }
