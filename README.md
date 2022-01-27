@@ -1,6 +1,7 @@
 # Sugar-seq
 Directory structure
-'''bash
+
+```bash
 .
 ├── analysis
 │   ├── 293T
@@ -47,4 +48,4 @@ Directory structure
         └── tags
 
 40 directories, 3 files
-'''
+```
