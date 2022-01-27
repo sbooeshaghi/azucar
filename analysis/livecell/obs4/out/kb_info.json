@@ -1,0 +1,60 @@
+{
+    "workdir": "/home/sina/projects/sugarseq/analysis/notebooks/livecell/rep2/lane1",
+    "version": "0.26.4",
+    "kallisto": {
+        "path": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/kallisto/kallisto",
+        "version": "0.46.2"
+    },
+    "bustools": {
+        "path": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/bustools/bustools",
+        "version": "0.40.0"
+    },
+    "start_time": "2021-10-02T21:50:13.560324",
+    "end_time": "2021-10-02T22:20:12.955779",
+    "elapsed": 1799.395455,
+    "call": "/home/sina/bin/miniconda3/bin/kb count --workflow kite:10xFB --h5ad --filter -t 16 -m 16G -o tags_out/ -i ../../../../../reference/livecell/tags/index.idx -g ../../../../../reference/livecell/tags/t2g.txt -x 10xv3 ../../../../../data/livecell/rep2/lane1/tags/SE7373_SA103715_S8_L001_R1_001.fastq.gz ../../../../../data/livecell/rep2/lane1/tags/SE7373_SA103715_S8_L001_R2_001.fastq.gz",
+    "commands": [
+        "kallisto bus -i ../../../../../reference/livecell/tags/index.idx -o tags_out/ -x 10xv3 -t 16 ../../../../../data/livecell/rep2/lane1/tags/SE7373_SA103715_S8_L001_R1_001.fastq.gz ../../../../../data/livecell/rep2/lane1/tags/SE7373_SA103715_S8_L001_R2_001.fastq.gz",
+        "bustools inspect tags_out/output.bus",
+        "bustools sort -o tags_out/tmp/output.s.bus -T tags_out/tmp -t 16 -m 16G tags_out/output.bus",
+        "bustools inspect tags_out/tmp/output.s.bus",
+        "bustools project -o tags_out/tmp/output.s.p.bus -m tags_out/10x_version3_feature_map.txt -e tags_out/matrix.ec -t tags_out/transcripts.txt --barcode tags_out/tmp/output.s.bus",
+        "bustools inspect tags_out/tmp/output.s.p.bus",
+        "bustools sort -o tags_out/tmp/output.s.p.s.bus -T tags_out/tmp -t 16 -m 16G tags_out/tmp/output.s.p.bus",
+        "bustools inspect tags_out/tmp/output.s.p.s.bus",
+        "bustools inspect -o tags_out/inspect.json -w tags_out/10x_version3_whitelist.txt -e tags_out/matrix.ec tags_out/tmp/output.s.p.s.bus",
+        "bustools correct -o tags_out/tmp/output.s.p.s.c.bus -w tags_out/10x_version3_whitelist.txt tags_out/tmp/output.s.p.s.bus",
+        "bustools inspect tags_out/tmp/output.s.p.s.c.bus",
+        "bustools sort -o tags_out/output.unfiltered.bus -T tags_out/tmp -t 16 -m 16G tags_out/tmp/output.s.p.s.c.bus",
+        "bustools inspect tags_out/output.unfiltered.bus",
+        "bustools count -o tags_out/counts_unfiltered/cells_x_features -g ../../../../../reference/livecell/tags/t2g.txt -e tags_out/matrix.ec -t tags_out/transcripts.txt --genecounts tags_out/output.unfiltered.bus",
+        "bustools whitelist -o tags_out/filter_barcodes.txt tags_out/output.unfiltered.bus",
+        "bustools correct -o tags_out/tmp/output.unfiltered.c.bus -w tags_out/filter_barcodes.txt tags_out/output.unfiltered.bus",
+        "bustools inspect tags_out/tmp/output.unfiltered.c.bus",
+        "bustools sort -o tags_out/output.filtered.bus -T tags_out/tmp -t 16 -m 16G tags_out/tmp/output.unfiltered.c.bus",
+        "bustools inspect tags_out/output.filtered.bus",
+        "bustools count -o tags_out/counts_filtered/cells_x_features -g ../../../../../reference/livecell/tags/t2g.txt -e tags_out/matrix.ec -t tags_out/transcripts.txt --genecounts tags_out/output.filtered.bus"
+    ],
+    "runtimes": [
+        280.48112177848816,
+        22.84945821762085,
+        46.905195236206055,
+        19.33341956138611,
+        98.00644516944885,
+        35.42913293838501,
+        231.7770130634308,
+        34.65370035171509,
+        54.18004369735718,
+        445.01844024658203,
+        22.182990789413452,
+        300.81428480148315,
+        14.457038640975952,
+        3.865415334701538,
+        0.31128621101379395,
+        34.190722703933716,
+        23.17624855041504,
+        100.31824851036072,
+        10.015790939331055,
+        2.3268802165985107
+    ]
+}

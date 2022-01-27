@@ -1,0 +1,52 @@
+{
+    "workdir": "/home/sina/projects/azucar/analysis/livecell/obs3",
+    "version": "0.26.4",
+    "kallisto": {
+        "path": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/kallisto/kallisto",
+        "version": "0.46.2"
+    },
+    "bustools": {
+        "path": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/bustools/bustools",
+        "version": "0.40.0"
+    },
+    "start_time": "2021-12-08T20:52:32.313754",
+    "end_time": "2021-12-08T21:17:56.609456",
+    "elapsed": 1524.295702,
+    "call": "/home/sina/bin/miniconda3/bin/kb count --h5ad --filter -t 16 -m 16G -o cdna_out/ -i ../../../reference/livecell/cdna/index.idx -g ../../../reference/livecell/cdna/t2g.txt -x 10xv3 ../../../data/livecell/rep2/lane1/cdna/SE7372_SA103707_S12_L001_R1_001.fastq.gz ../../../data/livecell/rep2/lane1/cdna/SE7372_SA103707_S12_L001_R2_001.fastq.gz",
+    "commands": [
+        "kallisto bus -i ../../../reference/livecell/cdna/index.idx -o cdna_out/ -x 10xv3 -t 16 ../../../data/livecell/rep2/lane1/cdna/SE7372_SA103707_S12_L001_R1_001.fastq.gz ../../../data/livecell/rep2/lane1/cdna/SE7372_SA103707_S12_L001_R2_001.fastq.gz",
+        "bustools inspect cdna_out/output.bus",
+        "bustools sort -o cdna_out/tmp/output.s.bus -T cdna_out/tmp -t 16 -m 16G cdna_out/output.bus",
+        "bustools inspect cdna_out/tmp/output.s.bus",
+        "bustools inspect -o cdna_out/inspect.json -w cdna_out/10x_version3_whitelist.txt -e cdna_out/matrix.ec cdna_out/tmp/output.s.bus",
+        "bustools correct -o cdna_out/tmp/output.s.c.bus -w cdna_out/10x_version3_whitelist.txt cdna_out/tmp/output.s.bus",
+        "bustools inspect cdna_out/tmp/output.s.c.bus",
+        "bustools sort -o cdna_out/output.unfiltered.bus -T cdna_out/tmp -t 16 -m 16G cdna_out/tmp/output.s.c.bus",
+        "bustools inspect cdna_out/output.unfiltered.bus",
+        "bustools count -o cdna_out/counts_unfiltered/cells_x_genes -g ../../../reference/livecell/cdna/t2g.txt -e cdna_out/matrix.ec -t cdna_out/transcripts.txt --genecounts cdna_out/output.unfiltered.bus",
+        "bustools whitelist -o cdna_out/filter_barcodes.txt cdna_out/output.unfiltered.bus",
+        "bustools correct -o cdna_out/tmp/output.unfiltered.c.bus -w cdna_out/filter_barcodes.txt cdna_out/output.unfiltered.bus",
+        "bustools inspect cdna_out/tmp/output.unfiltered.c.bus",
+        "bustools sort -o cdna_out/output.filtered.bus -T cdna_out/tmp -t 16 -m 16G cdna_out/tmp/output.unfiltered.c.bus",
+        "bustools inspect cdna_out/output.filtered.bus",
+        "bustools count -o cdna_out/counts_filtered/cells_x_genes -g ../../../reference/livecell/cdna/t2g.txt -e cdna_out/matrix.ec -t cdna_out/transcripts.txt --genecounts cdna_out/output.filtered.bus"
+    ],
+    "runtimes": [
+        935.1589031219482,
+        43.10850667953491,
+        45.744375467300415,
+        16.932413339614868,
+        39.14016556739807,
+        17.48418927192688,
+        15.039683103561401,
+        36.392324686050415,
+        15.518322944641113,
+        29.885080337524414,
+        0.7065377235412598,
+        10.803605079650879,
+        12.512914657592773,
+        27.999977588653564,
+        11.47542142868042,
+        20.06964635848999
+    ]
+}

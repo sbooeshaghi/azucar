@@ -1,0 +1,13 @@
+{
+	"n_targets": 0,
+	"n_bootstraps": 0,
+	"n_processed": 59466808,
+	"n_pseudoaligned": 47363562,
+	"n_unique": 47311165,
+	"p_pseudoaligned": 79.6,
+	"p_unique": 79.6,
+	"kallisto_version": "0.46.2",
+	"index_version": 0,
+	"start_time": "Sat Oct  2 21:50:13 2021",
+	"call": "/home/sina/bin/miniconda3/lib/python3.7/site-packages/kb_python/bins/linux/kallisto/kallisto bus -i ../../../../../reference/livecell/tags/index.idx -o tags_out/ -x 10xv3 -t 16 ../../../../../data/livecell/rep2/lane1/tags/SE7373_SA103715_S8_L001_R1_001.fastq.gz ../../../../../data/livecell/rep2/lane1/tags/SE7373_SA103715_S8_L001_R2_001.fastq.gz"
+}
