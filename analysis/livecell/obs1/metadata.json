@@ -1,0 +1,7 @@
+{
+    "cell_origin": "293T_neuro2a",
+    "organism": "homo_sapiens-mus_musculus",
+    "replicate": 1,
+    "lane_10x": 1,
+    "molecule_type": "cdna"
+}
