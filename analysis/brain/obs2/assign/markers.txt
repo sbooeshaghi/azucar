@@ -1,0 +1,4 @@
+bic	mtag3,mtag4
+tmg	mtag1,mtag4
+bic_tmg	mtag1,mtag3
+control	mtag1
