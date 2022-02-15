@@ -1,3 +1,4 @@
+import numpy as np
 from scipy.io import mmread, mmwrite
 from scipy.sparse import csr_matrix
 from .utils import write_list, read_int_list, read_str_list
