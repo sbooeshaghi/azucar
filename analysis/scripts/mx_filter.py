@@ -25,7 +25,7 @@ def gmm(x, v, comps):
     n_comps = comps.pop(0)
 
     gm = GaussianMixture(n_components=n_comps, random_state=42)
-    # labels = gm.fit_predict(v)
+    labels = gm.fit_predict(v)
     prob = gm.predict_proba(v)
     ent = entropy(prob, axis=1)
 
