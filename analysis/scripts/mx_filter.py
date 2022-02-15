@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.io import mmread, mmwrite
 from scipy.stats import entropy
 from sklearn.mixture import GaussianMixture
-
+from scipy.sparse import csr_matrix
 from .utils import nd, read_str_list, write_list
 
 
@@ -62,7 +62,7 @@ def mx_filter(
     select_axis=None,
 ):
     # read matrix
-    mtx = mmread(matrix_fn).tocsr().toarray()
+    mtx = mmread(matrix_fn).toarray()
 
     # read barcodes
     md = []
@@ -84,7 +84,7 @@ def mx_filter(
     md_f = np.array(md)[mask]
 
     # save filtered matrix
-    mmwrite(matrix_fn_out, mtx_f)
+    mmwrite(matrix_fn_out, csr_matrix(mtx_f))
 
     # save filtered metadata
     write_list(md_fn_out, md_f)
