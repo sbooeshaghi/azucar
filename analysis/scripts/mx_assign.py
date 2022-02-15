@@ -5,6 +5,7 @@ from sklearn.neighbors import KDTree
 from collections import defaultdict
 import numpy as np
 from scipy.io import mmread
+import pandas as pd
 
 # @title mx assign
 def mx_assign(
@@ -113,4 +114,4 @@ def mx_assign(
     for idx, p in enumerate(prob.T):
         df[f"mahalanobis_{idx}"] = p
 
-    df.to_csv(out_assignments_fn, index=False, sep="\t")
+    df.to_csv(out_assignments_fn, index=True, sep="\t")
