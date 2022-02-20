@@ -4,6 +4,7 @@ from ipfn import ipfn
 from .utils import nd
 from scipy.io import mmread, mmwrite
 from scipy.sparse import csr_matrix
+from sklearn.preprocessing import normalize
 
 
 def do_ipf(mtx, axis_uniform=1):
@@ -47,6 +48,12 @@ def mx_norm(matrix_fn, out_matrix_fn, how="ipf", target_sum=None):
         log1p = np.log1p(mtx)
         mtx_log1p = csr_matrix(log1p)
         mmwrite(out_matrix_fn, mtx_log1p)
+    elif how == "sf":
+        sf = mtx.sum(1).flatten()
+        mtx_sf = mtx / (sf / sf.mean())[:, None]
+        if target_sum:
+            mtx_sf = normalize(mtx, norm="l1") * target_sum
+        mmwrite(out_matrix_fn, mtx_sf)
 
 
 def read_str_list(fname, lst=list):
