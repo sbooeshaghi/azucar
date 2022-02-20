@@ -104,7 +104,7 @@ def mx_assign(
     ent = entropy(prob, axis=1)
 
     # make df
-    df = pd.DataFrame(G, columns=[f"{i}_ipf" for i in genes])
+    df = pd.DataFrame(G, columns=[f"{i}_assign" for i in genes])
 
     df["label_id"] = labels
     df["label"] = df["label_id"].map({i: groups[i] for i in range(len(groups))})
