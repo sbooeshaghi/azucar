@@ -53,7 +53,7 @@ def mx_norm(matrix_fn, out_matrix_fn, how="ipf", target_sum=None):
         mtx_sf = mtx / (sf / sf.mean())[:, None]
         if target_sum:
             mtx_sf = normalize(mtx, norm="l1") * target_sum
-        mmwrite(out_matrix_fn, mtx_sf)
+        mmwrite(out_matrix_fn, csr_matrix(mtx_sf))
 
 
 def read_str_list(fname, lst=list):
