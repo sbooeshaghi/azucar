@@ -1,0 +1,8 @@
+{
+    "cell_origin": "293T",
+    "organism": "homo_sapiens",
+    "replicate": 2,
+    "lane_10x": 1,
+    "molecule_type": "tags",
+    "observation": 4
+}
