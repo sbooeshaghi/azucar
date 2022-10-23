@@ -1,3 +1,0 @@
-no_sugar	mtag4
-control	mtag3
-tmg	mtag2,mtag3
